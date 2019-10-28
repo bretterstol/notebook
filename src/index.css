@@ -1,13 +1,67 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+
+html, body {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+table {
+  width: 100%;
+  border-collapse: collapse;
 }
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+.front{
+  display: flex;
+  height: 1000px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.front center{
+  max-width: 50%;
+}
+
+.front a {
+  background-color: whitesmoke;
+  color: black;
+  width: 50px;
+  height: 40px;
+  margin: 10px;
+  border-radius: 5px;
+  text-align: center;
+  justify-content: center;
+}
+
+.front a:hover{
+  background-color: wheat;
+}
+
+.content{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.topboard {
+  display: flex;
+  flex-flow: row wrap;
+  width: 100%;
+  height: 100px;
+  margin: 0px;
+  background-color: #2F66A9;
+}
+
+
+
+.content-table td,th{
+  text-align: left;
+  padding: 8px;
+  width: 300px;
+  border: 1px solid  #dddddd;
+}
+.content-table tr:nth-child(even){
+    background-color: #dddddd;
+}
+
