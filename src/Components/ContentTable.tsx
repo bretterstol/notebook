@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 
 import {Note} from './Notebook';
+import { RouteComponentProps, navigate, NavigateOptions } from '@reach/router';
 
-interface ContentTableProps{
+interface ContentTableProps extends RouteComponentProps{
     notes: Note[];
-    onClick: (a:string) => void
 }
 
 
@@ -23,7 +23,7 @@ const ContentTable = (props:ContentTableProps) => {
                 {notes.map(({description, tags, _id, modified, created}) => {
                     const date = modified || created;
                     return (
-                        <tr key={_id} onClick={e => props.onClick(_id)}>
+                        <tr key={_id} onClick={e => navigate(`notebook/${_id}`)}>
                             <td>{description}</td>
                             <td>{tags}</td>
                             <td>{String(date)}</td>

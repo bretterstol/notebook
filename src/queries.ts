@@ -12,7 +12,7 @@ export const GET_NOTES = gql`
     }
 `
 export const GET_NOTE = gql`
-    query GetNote($_id: String!) {
+    query GetNote($_id: ID!) {
         note(_id: $_id) {
             description
             tags
