@@ -16,6 +16,18 @@ export const GET_NOTE = gql`
         note(_id: $_id) {
             description
             tags
+            text
+            created
+            modified
+            _id
+        }
+    }
+`
+export const GET_NOTE_BY_TAG = gql`
+    query GetNoteByTag($tag: String!) {
+        noteByTag(tag: $tag) {
+            description
+            tags
             created
             modified
             _id

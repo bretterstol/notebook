@@ -1,11 +1,6 @@
-import React, { useState } from 'react'
-import {RouteComponentProps} from '@reach/router'
-import { useQuery, useLazyQuery } from '@apollo/react-hooks';
-
-import ContentTable from './ContentTable'
-import Searchbar from './Searchbar';
-import CreateNote from './NoteContainer';
-import { GET_NOTES, GET_NOTE } from '../queries';
+import React from 'react'
+import Searchbar from './Search/Searchbar';
+import {navigate} from '@reach/router';
 
 export interface Note{
     description: string;
@@ -17,25 +12,15 @@ export interface Note{
 }
 
 const Notebook = (props:any) => {
-    const [showNewNote, setShowNewNote] = useState(false);
-
-    const {loading, error, data} = useQuery(GET_NOTES);
-
-
+    console.log(props);
     const handleClick = () => {
-        setShowNewNote(!showNewNote);
+        navigate("/note/new-note")
     }
-    if(error) return <p>{error}</p>;
-    else if(loading) return <p>loading...</p>
-    else return(
+    return(
         <div>
             <Searchbar />
             <button onClick={handleClick}>New note</button>
-            {
-                showNewNote ?
-                    <CreateNote goBack={handleClick} /> :
-                     <ContentTable notes={data.notes} />
-            }
+            {props.children}
         </div>
     );
 }

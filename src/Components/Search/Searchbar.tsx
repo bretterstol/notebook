@@ -8,11 +8,10 @@ const Searchbar = () => {
     }
 
     return (
-        <div>
+        <div className="searchbar">
             <label>
                 Searchbar
             </label>
-            <br />
             <input value={text} onChange={handleChange}/> 
         </div>
     )
