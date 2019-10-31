@@ -11,7 +11,7 @@ import TagTable from './Tables/TagTables';
 import Nav from './Nav/Nav';
 
 const client = new ApolloClient({
-  link : new HttpLink({uri: "http://localhost:4000/graphql"}),
+  link : new HttpLink({uri: "https://qde29kvi38.execute-api.eu-central-1.amazonaws.com/dev/graphql"}),
   cache: new InMemoryCache()
 });
 
