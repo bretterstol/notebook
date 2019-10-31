@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {useMutation} from '@apollo/react-hooks';
 import {ADD_NOTE} from '../../mutations';
+import { Link } from '@reach/router';
 
 interface NoteProps {
     description: string;
@@ -44,7 +45,7 @@ const Note = (props: NoteProps) =>  {
         tags: <input value={tags} onChange={handleChage(setTags)}/>
         note: <textarea rows={4} cols= {50} value={note} onChange={handleChage(setNote)}/>
        <button type="submit"> Save </button>
-       <button type= "button" onClick={goBack}> Back </button>
+       <Link to="../notebook"> Back </Link>
    </form>
     {error ? <p style={{color: "red"}}> Må fylle inn alle punkter </p> : null }
     </div>
