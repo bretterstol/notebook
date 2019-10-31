@@ -45,9 +45,9 @@ const Note = (props: NoteProps) =>  {
         tags: <input value={tags} onChange={handleChage(setTags)}/>
         note: <textarea rows={4} cols= {50} value={note} onChange={handleChage(setNote)}/>
        <button type="submit"> Save </button>
-       <Link to="../notebook"> Back </Link>
    </form>
     {error ? <p style={{color: "red"}}> Må fylle inn alle punkter </p> : null }
+       <Link to="/notebook"> Back </Link>
     </div>
     )
 }

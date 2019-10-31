@@ -3,24 +3,24 @@ import {useQuery} from '@apollo/react-hooks';
 import { RouteComponentProps, navigate } from '@reach/router';
 import { GET_NOTE } from '../../queries';
 import Note from './Note'
+import NewNote from './NewNote';
 
-interface NoteContainerProps extends RouteComponentProps{
+interface SpecificNoteProps extends RouteComponentProps{
     _id ?: string;
 }
 
-const NoteContainer = (props:NoteContainerProps) => {
+const SpecificNote = (props:SpecificNoteProps) => {
     const {_id} = props;
     const {loading, data} = useQuery(GET_NOTE, {variables: {_id}});
 
-    const goBack = () => navigate("../notebook")
 
     if(loading) return <p>loading...</p>
     else if(data)return(
-        <Note description={data.note.description} tags={data.note.tags} text={data.note.text} goBack={goBack}/>
+        <Note description={data.note.description} tags={data.note.tags} text={data.note.text}/>
     )
     else return(
-        <Note description={""} tags={[]} text={""} goBack={goBack}/>
+        <NewNote />
     )
 }
 
-export default NoteContainer;
+export default SpecificNote;
