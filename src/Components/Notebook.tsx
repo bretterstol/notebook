@@ -12,9 +12,8 @@ export interface Note{
 }
 
 const Notebook = (props:any) => {
-    console.log(props);
     const handleClick = () => {
-        navigate("/note/new-note")
+        navigate("/note/")
     }
     return(
         <div>
