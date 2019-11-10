@@ -10,13 +10,13 @@ import NewNote from './Note/NewNote';
 import FullTable from './Tables/FullTable';
 import TagTable from './Tables/TagTables';
 import Nav from './Nav/Nav';
-import { isDev } from '../utils';
+import { isDev, apiUrl } from '../utils';
 import { resolvers } from '../Graphql/resolvers';
 import { typeDef } from '../Graphql/typeDef';
 
 const cache = new InMemoryCache()
 const client = new ApolloClient({
-  link : new HttpLink({uri: isDev ? "http://localhost:4000/graphql" : "https://qde29kvi38.execute-api.eu-central-1.amazonaws.com/dev/graphql"}),
+  link : new HttpLink({uri: apiUrl}),
   cache,
   resolvers: resolvers,
   typeDefs: typeDef
