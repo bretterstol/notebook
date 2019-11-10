@@ -10,7 +10,7 @@ export const GET_NOTES = gql`
             _id
         }
     }
-`
+`;
 export const GET_NOTE = gql`
     query GetNote($_id: ID!) {
         note(_id: $_id) {
@@ -22,7 +22,7 @@ export const GET_NOTE = gql`
             _id
         }
     }
-`
+`;
 export const GET_NOTE_BY_TAG = gql`
     query GetNoteByTag($tag: String!) {
         noteByTag(tag: $tag) {
@@ -33,4 +33,10 @@ export const GET_NOTE_BY_TAG = gql`
             _id
         }
     }
-`
+`;
+
+export const GET_NOTE_IS_MODIFIED = gql`
+    query GetNoteIsModified {
+        isModified @client
+    }
+`;

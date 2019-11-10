@@ -5,6 +5,7 @@ export const ADD_NOTE = gql`
         addNote(description: $desc, tags: $tags, text: $text) {
             _id
             description
+            isModified @client
         }
     }
 `
