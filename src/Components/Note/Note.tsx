@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {useMutation} from '@apollo/client';
 import {ADD_NOTE} from '../../Graphql/mutations';
 import { Link } from '@reach/router';
+import PopUp from '../Popups/popup';
 
 interface NoteProps {
     description: string;
@@ -33,9 +34,8 @@ const Note = (props: NoteProps) =>  {
         const tagsToSave = tags.split(",").map((t:string) => t.trim());
         if(validate()) saveNote({variables: {desc: description, tags: tagsToSave, text: note}})
         else setError(true);
-    }
-
-
+    };
+    console.log(saveResult.data)
     if(saveResult.error) return <p>{saveResult.error}</p>
     else return (
         <div>
@@ -47,6 +47,7 @@ const Note = (props: NoteProps) =>  {
             </form>
             {error ? <p style={{ color: "red" }}> Må fylle inn alle punkter </p> : null}
             <Link to="/notebook"> Back </Link>
+            {(saveResult && saveResult.data && saveResult.data.addNote.isModified) ? <PopUp /> : null}
         </div>
     )
 }

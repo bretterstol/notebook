@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 import {Note} from '../Notebook';
 import { RouteComponentProps, navigate, NavigateOptions, Link } from '@reach/router';
-import { QueryLazyOptions } from '@apollo/react-hooks';
+import { QueryLazyOptions } from '@apollo/client';
 
 interface ContentTableProps extends RouteComponentProps{
     notes: Note[];
