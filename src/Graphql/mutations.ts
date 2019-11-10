@@ -1,4 +1,4 @@
-import {gql} from 'apollo-boost';
+import {gql} from '@apollo/client';
 
 export const ADD_NOTE = gql`
     mutation AddNote($desc: String!, $tags: [String!]!, $text: String!) {

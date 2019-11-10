@@ -1,7 +1,7 @@
 import React from 'react';
-import { useQuery } from '@apollo/react-hooks';
+import { useQuery } from '@apollo/client';
 import ContentTable from './ContentTable';
-import { GET_NOTE_BY_TAG } from '../../queries';
+import { GET_NOTE_BY_TAG } from '../../Graphql/queries';
 import { RouteComponentProps } from '@reach/router';
 
 interface TagProps extends RouteComponentProps{

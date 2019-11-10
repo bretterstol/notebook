@@ -1,6 +1,6 @@
 import React from 'react';
-import { useQuery } from '@apollo/react-hooks';
-import { GET_NOTES } from '../../queries';
+import { useQuery } from '@apollo/client';
+import { GET_NOTES } from '../../Graphql/queries';
 import ContentTable from './ContentTable';
 import { RouteComponentProps } from '@reach/router';
 

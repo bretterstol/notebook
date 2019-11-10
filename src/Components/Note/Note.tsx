@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
-import {useMutation} from '@apollo/react-hooks';
-import {ADD_NOTE} from '../../mutations';
+import {useMutation} from '@apollo/client';
+import {ADD_NOTE} from '../../Graphql/mutations';
 import { Link } from '@reach/router';
 
 interface NoteProps {
@@ -24,8 +24,6 @@ const Note = (props: NoteProps) =>  {
             handler(value);
         }
     }
-    const goBack = () => props.goBack && props.goBack();
-
     const validate = () => {
            return [description, tags, note].every(value => value != "");
     }
@@ -37,18 +35,19 @@ const Note = (props: NoteProps) =>  {
         else setError(true);
     }
 
+
     if(saveResult.error) return <p>{saveResult.error}</p>
-    return (
+    else return (
         <div>
-        <form onSubmit={onSave}>
-        description: <input value={description} onChange={handleChage(setDescription)}/>
-        tags: <input value={tags} onChange={handleChage(setTags)}/>
-        note: <textarea rows={4} cols= {50} value={note} onChange={handleChage(setNote)}/>
-       <button type="submit"> Save </button>
-   </form>
-    {error ? <p style={{color: "red"}}> Må fylle inn alle punkter </p> : null }
-       <Link to="/notebook"> Back </Link>
-    </div>
+            <form onSubmit={onSave}>
+                description: <input value={description} onChange={handleChage(setDescription)} />
+                tags: <input value={tags} onChange={handleChage(setTags)} />
+                note: <textarea rows={4} cols={50} value={note} onChange={handleChage(setNote)} />
+                <button type="submit"> Save </button>
+            </form>
+            {error ? <p style={{ color: "red" }}> Må fylle inn alle punkter </p> : null}
+            <Link to="/notebook"> Back </Link>
+        </div>
     )
 }
 

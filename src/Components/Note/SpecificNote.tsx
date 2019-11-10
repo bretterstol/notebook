@@ -1,7 +1,7 @@
 import React from 'react';
-import {useQuery} from '@apollo/react-hooks';
-import { RouteComponentProps, navigate } from '@reach/router';
-import { GET_NOTE } from '../../queries';
+import {useQuery} from '@apollo/client';
+import { RouteComponentProps } from '@reach/router';
+import { GET_NOTE } from '../../Graphql/queries';
 import Note from './Note'
 import NewNote from './NewNote';
 

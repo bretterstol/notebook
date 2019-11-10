@@ -1,8 +1,7 @@
 import React from 'react';
 
 import {Router} from '@reach/router';
-import {ApolloClient, HttpLink, InMemoryCache} from 'apollo-boost';
-import {ApolloProvider} from '@apollo/react-hooks'
+import {ApolloProvider, ApolloClient, HttpLink, InMemoryCache} from '@apollo/client';
 import Notebook from './Notebook';
 import Front from './Front';
 import SpecificNote from './Note/SpecificNote';
@@ -13,10 +12,19 @@ import TagTable from './Tables/TagTables';
 import Nav from './Nav/Nav';
 import { isDev } from '../utils';
 
+const cache = new InMemoryCache()
 const client = new ApolloClient({
   link : new HttpLink({uri: isDev ? "http://localhost:4000/graphql" : "https://qde29kvi38.execute-api.eu-central-1.amazonaws.com/dev/graphql"}),
-  cache: new InMemoryCache()
+  cache
 });
+
+const initData = {
+  note: {
+    showInfo: false,
+  }
+};
+
+cache.writeData({data: initData})
 
 const App: React.FC = () => {
   return (
