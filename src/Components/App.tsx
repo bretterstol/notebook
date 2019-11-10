@@ -24,6 +24,7 @@ const client = new ApolloClient({
 
 const initData = {
   isModified: false,
+  hasFetched: false
 };
 
 cache.writeData({data: initData})

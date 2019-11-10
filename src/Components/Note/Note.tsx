@@ -3,6 +3,7 @@ import {useMutation} from '@apollo/client';
 import {ADD_NOTE} from '../../Graphql/mutations';
 import { Link } from '@reach/router';
 import PopUp from '../Popups/popup';
+import { GET_NOTES } from '../../Graphql/queries';
 
 interface NoteProps {
     description: string;
@@ -12,11 +13,14 @@ interface NoteProps {
 }
 
 const Note = (props: NoteProps) =>  {
-    const [saveNote, saveResult] = useMutation(ADD_NOTE);
+    const [saveNote, saveResult] = useMutation(ADD_NOTE, {
+        refetchQueries: [{query: GET_NOTES}],
+    });
     const [description, setDescription] = useState(props.description);
     const [tags, setTags] = useState(props.tags.join(","));
     const [note, setNote] = useState(props.text);
     const [error, setError] = useState(false);
+
 
     const handleChage = (handler: React.Dispatch<React.SetStateAction<any>>) => {
         return (e:React.ChangeEvent<HTMLInputElement|HTMLTextAreaElement>) => {
@@ -26,7 +30,7 @@ const Note = (props: NoteProps) =>  {
         }
     }
     const validate = () => {
-           return [description, tags, note].every(value => value != "");
+           return [description, tags, note].every(value => value !== "");
     }
 
     const onSave = (e:React.FormEvent<HTMLFormElement>) => {
@@ -47,7 +51,7 @@ const Note = (props: NoteProps) =>  {
             </form>
             {error ? <p style={{ color: "red" }}> Må fylle inn alle punkter </p> : null}
             <Link to="/notebook"> Back </Link>
-            {(saveResult && saveResult.data && saveResult.data.addNote.isModified) ? <PopUp /> : null}
+            {(saveResult && saveResult.data) ? <PopUp /> : null}
         </div>
     )
 }

@@ -40,3 +40,9 @@ export const GET_NOTE_IS_MODIFIED = gql`
         isModified @client
     }
 `;
+
+export const GET_HAS_FETCHED = gql`
+    query GetHasFetched {
+        hasFetched @client
+    }
+`
